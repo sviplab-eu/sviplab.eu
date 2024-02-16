@@ -4,7 +4,6 @@ import styles from './style.module.scss'
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
-import Video from 'next-video';
 
 export default function Home() {
 
