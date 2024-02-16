@@ -12,9 +12,6 @@ export default function Home() {
       <PreloaderMod />
       <Hero />
       <Projects />
-
-      <ContactForm />
-
       <Contacts />
     </main>
   )
