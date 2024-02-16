@@ -22,7 +22,6 @@ export function Header() {
                     </Link>
 
                     <div className={styles.menuContactsButtons + " text-white"}>
-                        <Link href={"/contacts"} className={styles.contactButton}>Contact</Link>
                         <Burger openMenu={() => { setMenuIsOpen(true) }} />
                         <AnimatePresence mode="wait">
 

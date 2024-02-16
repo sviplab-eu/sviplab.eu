@@ -1,32 +1,66 @@
 'use client'
-
-import { useState } from 'react';
+import Image from 'next/image'
 import styles from './style.module.scss'
-import { mango } from '@/app/fonts/fonts'
-import Link from 'next/link';
+import { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
+import Video from 'next-video';
 
-export default function Hero() {
+export default function Home() {
 
-    const [isHovered, setIsHovered] = useState(false);
+    const firstText = useRef(null);
+    const secondText = useRef(null);
+    const slider = useRef(null);
+    let xPercent = 0;
+    let direction = -1;
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.to(slider.current, {
+            scrollTrigger: {
+                trigger: document.documentElement,
+                scrub: 0.25,
+                start: 0,
+                end: window.innerHeight,
+                onUpdate: e => direction = e.direction * -1
+            },
+            x: "-500px",
+        })
+        requestAnimationFrame(animate);
+    }, [])
+
+    const animate = () => {
+        if (xPercent < -100) {
+            xPercent = 0;
+        }
+        else if (xPercent > 0) {
+            xPercent = -100;
+        }
+        gsap.set(firstText.current, { xPercent: xPercent })
+        gsap.set(secondText.current, { xPercent: xPercent })
+        requestAnimationFrame(animate);
+        xPercent += 0.1 * direction;
+    }
 
     return (
-        <>
-            <section className={'flex flex-col justify-center h-screen z-1 relative ' + styles.hero}>
-                <h1 className={mango.className + ' justify-center text-center text-18vw z-10'}>Design that
-                    <span className='ml-12 bg-lime-300 text-black hover:text-lime-300 hover:bg-black transition duration-150 ease-out hover:ease-in'>
-                        inspires
-                    </span>
-                </h1>
+        <main className={styles.main}>
+            {/*<Image
+                src="/images/background.webp"
+                fill={true}
+                alt="background"
+    />*/}
+            <video preload='true' autoPlay={true}>
+                <source src="https://assets.codepen.io/6093409/river.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
 
-                <div className={styles.gallery + ' text-center z-10'}>
-                    <Link href={""}>elp</Link>
+
+            <div className={styles.sliderContainer}>
+                <div ref={slider} className={styles.slider}>
+                    <p ref={firstText}>Freelance Developer -</p>
+                    <p ref={secondText}>Freelance Developer -</p>
                 </div>
-
-                <video muted loop autoPlay>
-                    <source src="https://assets.codepen.io/6093409/river.mp4" type="video/mp4" />
-                </video>
-            </section>
-        </>
+            </div>
+        </main>
     )
-
 }
