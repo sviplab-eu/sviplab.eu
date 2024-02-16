@@ -1,11 +1,9 @@
 'use client'
 
 import styles from './style.module.scss';
-import Image from 'next/image';
 import { useRef } from 'react';
 import { useScroll, motion, useTransform, useSpring } from 'framer-motion';
 import Rounded from '../common/RoundedButton';
-import Link from 'next/link';
 
 export default function Contacts({ openMenu }: any) {
     const container = useRef(null);
