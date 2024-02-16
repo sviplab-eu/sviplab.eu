@@ -76,7 +76,7 @@ export default function Projects() {
   }
 
   return (
-    <main onMouseMove={(e) => { moveItems(e.clientX, e.clientY) }} className={styles.projects} id='projects'>
+    <main onMouseMove={(e) => { moveItems(e.clientX, e.clientY) }} className={styles.projects + ' h-screen'} id='projects'>
       <div className={styles.body}>
         {
           projects.map((project, index) => {
