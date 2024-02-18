@@ -5,27 +5,32 @@ import Project from './components/project';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const projects = [
   {
     title: "C2 Montreal",
     src: "c2montreal.png",
-    color: "#000000"
+    color: "#000000",
+    url: "first"
   },
   {
     title: "Office Studio",
     src: "officestudio.png",
-    color: "#8C8C8C"
+    color: "#8C8C8C",
+    url: "second"
   },
   {
     title: "Locomotive",
     src: "locomotive.png",
-    color: "#EFE8D3"
+    color: "#EFE8D3",
+    url: "#"
   },
   {
     title: "Silencio",
     src: "silencio.png",
-    color: "#706D63"
+    color: "#706D63",
+    url: "#"
   }
 ]
 
@@ -75,12 +80,20 @@ export default function Projects() {
     setModal({ active, index })
   }
 
+  const imageLoader = ({ src, width, quality }) => {
+    return `https://sviplab.eu/images/${src}?w=${width}&q=${quality || 75}`
+  }
+
   return (
     <main onMouseMove={(e) => { moveItems(e.clientX, e.clientY) }} className={styles.projects + ' h-screen'} id='projects'>
       <div className={styles.body}>
         {
           projects.map((project, index) => {
-            return <Project index={index} title={project.title} manageModal={manageModal} key={index} />
+            return (
+              <Link href={"project/" + project.url} className='d-block'>
+                <Project index={index} title={project.title} manageModal={manageModal} key={index} />
+              </Link>
+            )
           })
         }
       </div>
@@ -95,7 +108,8 @@ export default function Projects() {
                 const { src, color } = project
                 return <div className={styles.modal} style={{ backgroundColor: color }} key={`modal_${index}`}>
                   <Image
-                    src={`/images/${src}`}
+                    loader={imageLoader}
+                    src={`${src}`}
                     width={300}
                     height={0}
                     alt="image"
