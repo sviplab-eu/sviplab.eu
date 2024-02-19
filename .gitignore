@@ -39,3 +39,6 @@ next-env.d.ts
 
 *.module.css
 *.module.css.map
+
+#ftp
+/.ftp-deploy-sync-state.json
