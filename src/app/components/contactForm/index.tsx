@@ -26,7 +26,7 @@ export default function ContactForm() {
                 className='flex justify-center w-full'
                 onSubmit={handleSubmit(onSubmit)}>
                 <input
-                    className='my-2 py-2 px-4 rounded-md bg-gray-900 text-gray-300 w-full md:w-1/2 md:mr-2 outline-none focus:ring-2 focus:ring-blue-600'
+                    className='block w-full outline-none'
                     type="text"
                     placeholder="Name"
                     {...register('name', {
@@ -40,7 +40,7 @@ export default function ContactForm() {
 
 
                 <input
-                    className='my-2 py-2 px-4 rounded-md bg-gray-900 text-gray-300 w-full md:w-1/2 md:mr-2 outline-none focus:ring-2 focus:ring-blue-600'
+                    className='block w-full outline-none'
                     type="text"
                     placeholder='phone'
                     {...register('phone', {

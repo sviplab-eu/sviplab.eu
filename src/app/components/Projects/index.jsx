@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import Image from 'next/image';
 import Link from 'next/link';
+import Link from 'next/link';
 
 const projects = [
   {
@@ -13,12 +14,16 @@ const projects = [
     src: "c2montreal.png",
     color: "#000000",
     url: "first"
+    color: "#000000",
+    slug: "coffeeboom"
   },
   {
     title: "Office Studio",
     src: "officestudio.png",
     color: "#8C8C8C",
     url: "second"
+    color: "#8C8C8C",
+    slug: "branity"
   },
   {
     title: "Locomotive",
@@ -86,11 +91,16 @@ export default function Projects() {
 
   return (
     <main onMouseMove={(e) => { moveItems(e.clientX, e.clientY) }} className={styles.projects + ' h-screen'} id='projects'>
+      <div className='py-16'>
+        <span className='bg-emerald-700 text-white px-5 py-3 rounded-full'>Our cases</span>
+      </div>
+
+
       <div className={styles.body}>
         {
           projects.map((project, index) => {
             return (
-              <Link href={"project/" + project.url} className='d-block'>
+              <Link key={index} href={`/project/${project.slug}`} className='w-full'>
                 <Project index={index} title={project.title} manageModal={manageModal} key={index} />
               </Link>
             )
@@ -98,7 +108,6 @@ export default function Projects() {
         }
       </div>
 
-      <p>More work</p>
 
       <>
         <motion.div ref={modalContainer} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"} className={styles.modalContainer}>

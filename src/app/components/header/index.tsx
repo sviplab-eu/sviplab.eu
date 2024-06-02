@@ -36,6 +36,11 @@ export function Header() {
                     </div>
                 </div>
             </nav>
+            <div className="fixed bottom-10 right-10">
+                <Link href={"/#projects"} className="text-white text-4xl absolute">
+                    CLOSE
+                </Link>
+            </div>
         </>
     )
 }
