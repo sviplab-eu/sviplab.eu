@@ -13,6 +13,9 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      cursor: {
+        'fancy': 'url(images/cursor.svg), pointer',
+      }
     },
     fontSize: {
       '18vw': '18vw',

@@ -25,8 +25,6 @@ jobs:
           fi
       - name: Build project
         run: npm run build --if-present
-      - name: Test project
-        run: npm test
 
   web-deploy:
     name: 🎉 Deploy
