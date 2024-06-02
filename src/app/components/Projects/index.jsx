@@ -6,23 +6,20 @@ import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import Image from 'next/image';
 import Link from 'next/link';
-import Link from 'next/link';
 
 const projects = [
   {
     title: "C2 Montreal",
     src: "c2montreal.png",
     color: "#000000",
-    url: "first"
-    color: "#000000",
+    url: "first",
     slug: "coffeeboom"
   },
   {
     title: "Office Studio",
     src: "officestudio.png",
     color: "#8C8C8C",
-    url: "second"
-    color: "#8C8C8C",
+    url: "second",
     slug: "branity"
   },
   {
