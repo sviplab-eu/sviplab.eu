@@ -1,43 +1,46 @@
-import { type NextRequest, NextResponse } from 'next/server';
+// src/app/api/sendemail/route.ts
+import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-export async function POST(req: NextRequest) {
-
-    const { name, phone } = await req.json();
-
-    // Configure Nodemailer
-    const transporter: nodemailer.Transporter = nodemailer.createTransport({
+// Helper function to send an email
+async function sendEmail({ name, email, phone, message, interestedIn, files }: any) {
+    let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: process.env.SMTP_EMAIL, // replace with your Gmail email
-            pass: process.env.SMTP_PASSWORD, // replace with your Gmail password or app-specific password
+            user: process.env.GMAIL_USER,
+            pass: process.env.GMAIL_PASS,
         },
     });
 
-    const mailData = {
-        from: "testme@gmail.com",
-        to: process.env.SMTP_EMAIL,
+    let mailOptions = {
+        from: `"${name}" <${email}>`,
+        to: 'ipiliavskyi@gmail.com',
         subject: 'New Contact Form Submission',
-        html: `Name: ${name} <br> Phone: ${phone}`,
-    }
+        text: `
+            Name: ${name}
+            Email: ${email}
+            Phone: ${phone}
+            Message: ${message}
+            Interested in: ${interestedIn}
+        `,
+        attachments: files.map((file: any) => ({
+            filename: file.name,
+            path: file.path,
+            contentType: file.type,
+        })),
+    };
 
-    const sendMailPromise = () =>
-        new Promise<string>((resolve, reject) => {
-            transporter.sendMail(mailData, function (err) {
-                if (!err) {
-                    resolve('Email sent');
-                } else {
-                    reject(err.message);
-                }
-            });
-        });
+    await transporter.sendMail(mailOptions);
+}
 
+// POST handler
+export async function POST(request: NextRequest) {
     try {
-        // Send the email
-        await sendMailPromise();
-        return NextResponse.json({ message: 'Email sent' });
+        const { name, email, phone, message, interestedIn, files } = await request.json();
+        await sendEmail({ name, email, phone, message, interestedIn, files });
+        return NextResponse.json({ message: 'Email sent successfully' });
     } catch (error) {
         console.error('Error sending email:', error);
+        return NextResponse.json({ message: 'Error sending email', error }, { status: 500 });
     }
-
 }

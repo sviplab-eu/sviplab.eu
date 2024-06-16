@@ -87,7 +87,7 @@ export default function Projects() {
   }
 
   return (
-    <main onMouseMove={(e) => { moveItems(e.clientX, e.clientY) }} className={styles.projects + ' h-screen'} id='projects'>
+    <main onMouseMove={(e) => { moveItems(e.clientX, e.clientY) }} className={styles.projects + ' min-h-screen'} id='projects'>
       <div className='py-16'>
         <span className='bg-emerald-700 text-white px-5 py-3 rounded-full'>Our cases</span>
       </div>
