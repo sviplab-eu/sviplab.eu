@@ -26,6 +26,12 @@
       "@/*": [
         "./src/*"
       ],
+      "@/db/*": [
+        "./src/app/db/*"
+      ],
+      "@/components/*" : [
+        "./src/app/components/*"
+      ],
       "@/fonts": [
         "./src/app/fonts"
       ]
