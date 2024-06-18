@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Header } from './../components/header'
+import TransitionPage from './transition'
 
 
 export const metadata: Metadata = {
@@ -15,10 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <>
+        <TransitionPage>
           <Header />
           {children}
-        </>
+        </TransitionPage>
       </body>
     </html>
   )
