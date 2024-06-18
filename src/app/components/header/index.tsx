@@ -1,46 +1,47 @@
-"use client"
+"use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Burger from "../burger";
 import { AnimatePresence } from "framer-motion";
 import Stairs from "../stairs";
-import Menu from "../menu";
+import ContactsMenu from "../contactsMenu";
+import MainMenu from "../mainMenu";
 import styles from './style.module.scss';
 import Link from "next/link";
+import MainMenuBurger from '../mainMenuBurger';
 
 export function Header() {
-
-    const [menuIsOpen, setMenuIsOpen] = useState(false);
-
+    const [contactsMenuIsOpen, setContactsMenuIsOpen] = useState(false);
+    const [mainMenuIsOpen, setMainMenuIsOpen] = useState(false);
 
     return (
-        <>
-            <nav className="fixed z-20 w-full">
-                <div className="fixmenu">
-                    <Link href={"/"} className="text-white text-4xl absolute">
-                        LOGO
-                    </Link>
+        <nav className={`flex items-center justify-between fixed z-20 w-full px-5 pt-5 `}>
+            
+            <Link href={"/"} className="text-white text-4xl">
+                LOGO
+            </Link>
 
-                    <div className={styles.menuContactsButtons + " text-white"}>
-                        <Burger openMenu={() => { setMenuIsOpen(true) }} />
-                        <AnimatePresence mode="wait">
+            <div>
+            <div className={styles.menuContactsButtons + " text-white"}>
+                <div className='flex content-center justify-center items-center'>
+                    <Burger openMenu={() => { setContactsMenuIsOpen(true) }} />
+                    <AnimatePresence mode="wait">
+                        {contactsMenuIsOpen && <>
+                            <Stairs />
+                            <ContactsMenu closeMenu={() => { setContactsMenuIsOpen(false) }} />
+                        </>}
+                    </AnimatePresence>
 
-                            {
-                                menuIsOpen && <>
-                                    <Stairs />
-                                    <Menu closeMenu={() => { setMenuIsOpen(false) }} />
-                                </>
-                            }
-
-                        </AnimatePresence>
-                    </div>
+                    <MainMenuBurger openMenu={() => { setMainMenuIsOpen(true) }} />
+                    <AnimatePresence mode="wait">
+                        {mainMenuIsOpen && <>
+                            <Stairs />
+                            <MainMenu closeMenu={() => { setMainMenuIsOpen(false) }} />
+                        </>}
+                    </AnimatePresence>
                 </div>
-            </nav>
-            <div className="fixed bottom-10 right-10">
-                <Link href={"/#projects"} className="text-white text-4xl absolute">
-                    CLOSE
-                </Link>
             </div>
-        </>
-    )
+            </div>
+        </nav>
+    );
 }
