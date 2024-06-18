@@ -21,7 +21,6 @@ export default function PreloaderMod() {
 
             return () => clearTimeout(timer);
         } else {
-            setIsLoading(false);
         }
     }, []);
 
