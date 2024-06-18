@@ -23,7 +23,7 @@ export default function Contacts({ openMenu }: any) {
 
     return (
         <>
-            <motion.div style={{ y }} ref={container} className={styles.contact + " h-screen"} id={'contacts'} >
+            <motion.div style={{ y }} ref={container} className={styles.contact + " min-h-screen"} id={'contacts'} >
                 <div className={styles.body}>
                     <div className={styles.title}>
                         <span>
@@ -31,7 +31,7 @@ export default function Contacts({ openMenu }: any) {
                             <br /><br /><br /><br /><br /><br /><br />
                         </span>
                         <motion.div style={{ x }} className={styles.buttonContainer}>
-                            <div onClick={handleClick} id='contbut'>
+                            <div id='contbut'>
                                 <Rounded backgroundColor={"#334BD3"} className={styles.button}>
                                     <p>Get in touch</p>
                                 </Rounded>

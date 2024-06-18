@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { opacity, slideUp } from './anim';
 
-const words = ["Hello", "Bonjour", "Ciao", "Olà", "やあ", "Hallå", "Guten tag", "Hallo"]
-
+const words = ["Hello", " ", "Bonjour", " ", "Ciao", " ", "Olà", " ", "やあ", " ", "Hallå", " ", "Guten tag", " ", "Hallo"]
+const loading = ["loading...", "loading...", "loading...", "loading...", "loading...", "loading...", "loading...", "loading..."]
 export default function Preloader() {
     const [index, setIndex] = useState(0);
     const [dimension, setDimension] = useState({ width: 0, height: 0 });
@@ -40,7 +40,8 @@ export default function Preloader() {
             <motion.div variants={slideUp} initial="initial" exit="exit" className={styles.introduction}>
                 {dimension.width > 0 &&
                     <>
-                        <motion.p variants={opacity} initial="initial" animate="enter"><span></span>{words[index]}</motion.p>
+                        <motion.p variants={opacity} initial="initial" animate="enter">{words[index]}</motion.p>
+                        <motion.p variants={opacity} initial="initial" animate="enter" className='pt-64'>{loading[index]}</motion.p>
                         <svg>
                             <motion.path variants={curve} initial="initial" exit="exit"></motion.path>
                         </svg>

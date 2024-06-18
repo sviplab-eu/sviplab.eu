@@ -43,12 +43,7 @@ export default function Home() {
 
     return (
         <main className={styles.main}>
-            {/*<Image
-                src="/images/background.webp"
-                fill={true}
-                alt="background"
-    />*/}
-            <video preload='true' autoPlay={true}>
+            <video preload='true' autoPlay no-controls='true' loop playsInline muted>
                 <source src="https://assets.codepen.io/6093409/river.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
@@ -56,8 +51,8 @@ export default function Home() {
 
             <div className={styles.sliderContainer}>
                 <div ref={slider} className={styles.slider}>
-                    <p ref={firstText}>Freelance Developer -</p>
-                    <p ref={secondText}>Freelance Developer -</p>
+                    <p ref={firstText}>Web Development &#9679; Software Testing &#9679; Mobile Development &#9679; </p>
+                    <p ref={secondText}>Web Development &#9679; Software Testing &#9679; Mobile Development &#9679; </p>
                 </div>
             </div>
         </main>
