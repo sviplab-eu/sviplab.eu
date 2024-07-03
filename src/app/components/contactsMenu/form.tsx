@@ -33,9 +33,9 @@ const initialFormData: FormData = {
 };
 
 const CheckboxField = ({ id, label, checked, onChange }: { id: string, label: string, checked: boolean, onChange: (e: ChangeEvent<HTMLInputElement>) => void }) => (
-    <li>
+    <li className='group'>
         <input type="checkbox" id={id} name={id} checked={checked} onChange={onChange} className="hidden peer" />
-        <label htmlFor={id} className="inline-flex items-center justify-between w-full p-5 text-white border-2 border-gray-200 rounded-full cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-white peer-checked:bg-white hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-40 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <label htmlFor={id} className="inline-flex items-center justify-between w-full p-5 text-white border-2 border-gray-200 rounded-full cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-white peer-checked:bg-white hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-slate-300 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
             <div className="block">
                 <div className="w-full text-lg font-semibold">
                     {checked ? (
@@ -51,13 +51,13 @@ const CheckboxField = ({ id, label, checked, onChange }: { id: string, label: st
 );
 
 const CheckedIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 inline">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 inline hover:bg-white group-hover:bg-white">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
     </svg>
 );
 
 const UncheckedIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 inline bg-black">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 inline hover:text-blue-500">
         <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
     </svg>
 );
@@ -169,7 +169,7 @@ const Index = ({ closeMenu }: Props) => {
     };
 
     return (
-        <form className="mx-auto" onSubmit={handleSubmit}>
+        <form className="mx-auto pb-5" onSubmit={handleSubmit}>
             
             <div className="relative z-0 w-full mb-5 group">
                 <div className='pb-5 font-bold'>I'm interested in...</div>

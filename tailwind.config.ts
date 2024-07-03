@@ -17,9 +17,6 @@ const config: Config = {
         'fancy': 'url(images/cursor.svg), pointer',
       }
     },
-    fontSize: {
-      '18vw': '18vw',
-    }
   },
   plugins: [],
 }
