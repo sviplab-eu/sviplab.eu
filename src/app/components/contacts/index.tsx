@@ -1,29 +1,41 @@
 'use client'
 
 import styles from './style.module.scss';
-import { useRef } from 'react';
-import { useScroll, motion, useTransform, useSpring } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { useScroll, motion, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import Rounded from '../common/RoundedButton';
+import Stairs from '../stairs';
+import ContactsMenu from '../contactsMenu';
 
 export default function Contacts({ openMenu }: any) {
     const container = useRef(null);
     const { scrollYProgress } = useScroll({
         target: container,
         offset: ["start end", "end end"]
-    })
-    const x = useTransform(scrollYProgress, [0, 1], [0, 100])
-    const y = useTransform(scrollYProgress, [0, 1], [0, 0])
-    const rotate = useTransform(scrollYProgress, [0, 1], [120, 90])
+    });
+    const x = useTransform(scrollYProgress, [0, 1], [0, 100]);
+    const y = useTransform(scrollYProgress, [0, 1], [0, 0]);
+    const rotate = useTransform(scrollYProgress, [0, 1], [120, 90]);
 
     const currentYear = new Date().getFullYear();
+    const [contactsMenuIsOpen, setContactsMenuIsOpen] = useState(false);
 
-    function handleClick() {
-        console.log('increment like count');
+    function openContactMenu() {
+        setContactsMenuIsOpen(true);
     }
 
     return (
         <>
-            <motion.div style={{ y }} ref={container} className={styles.contact + " min-h-screen"} id={'contacts'} >
+            <AnimatePresence mode="wait">
+                {contactsMenuIsOpen && (
+                    <>
+                        <Stairs background={'black'} stairsColor={'black'} />
+                        <ContactsMenu closeMenu={() => { setContactsMenuIsOpen(false) }} />
+                    </>
+                )}
+            </AnimatePresence>
+
+            <motion.div style={{ y }} ref={container} className={styles.contact + " min-h-screen flex max-md:hidden"} id={'contacts'} >
                 <div className={styles.body}>
                     <div className={styles.title}>
                         <span>
@@ -32,7 +44,7 @@ export default function Contacts({ openMenu }: any) {
                         </span>
                         <motion.div style={{ x }} className={styles.buttonContainer}>
                             <div id='contbut'>
-                                <Rounded backgroundColor={"#334BD3"} className={styles.button}>
+                                <Rounded backgroundColor={"#334BD3"} className={styles.button} onClick={openContactMenu}>
                                     <p>Get in touch</p>
                                 </Rounded>
                             </div>
@@ -42,12 +54,16 @@ export default function Contacts({ openMenu }: any) {
                         </motion.svg>
                     </div>
                     <div className={styles.nav}>
-                        <Rounded>
-                            <p>+34 12 34 56 78</p>
-                        </Rounded>
-                        <Rounded>
-                            <p>WhatsApp</p>
-                        </Rounded>
+                        <a href="tel:+48505862433">
+                            <Rounded>
+                                <p>+48 505 86 24 33</p>
+                            </Rounded>
+                        </a>
+                        <a href="https://wa.me/48505862433" target='_blank'>
+                            <Rounded>
+                                <p>WhatsApp</p>
+                            </Rounded>
+                        </a>
                         <Rounded>
                             <p>info@sviplab.eu</p>
                         </Rounded>
@@ -76,5 +92,5 @@ export default function Contacts({ openMenu }: any) {
                 </div>
             </motion.div>
         </>
-    )
+    );
 }

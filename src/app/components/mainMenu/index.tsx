@@ -5,8 +5,14 @@ import Link from './link';
 
 const menu = [
   {
+    title: "Home",
+    url: "/",
+    description: "To See Everything",
+    images: ['agence1.jpg', 'agence2.jpg']
+  },
+  {
     title: "Case studies",
-    url: "#",
+    url: "/projects",
     description: "To See Everything",
     images: ['agence1.jpg', 'agence2.jpg']
   },
@@ -21,19 +27,13 @@ const menu = [
     url: "#",
     description: "To Send a FAX",
     images: ['contact2.jpg', 'c2.jpg']
-  },
-  {
-    title: "Career",
-    url: "#",
-    description: "Work with us",
-    images: ['contact2.jpg', 'panda.jpg']
   }
 ]
 
 export default function index({closeMenu}: any) {
 
   return (
-    <div className={styles.menu}>
+    <div className={styles.menu + ' bg-white'}>
 
           <div className={styles.header}>
           <div className='flex justify-end pt-1'>

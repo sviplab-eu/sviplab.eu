@@ -3,10 +3,10 @@ import styles from './style.module.scss';
 import { height, background, mountAnim } from '../stairs/anim';
 import { motion } from 'framer-motion';
 
-export default function index() {
+export default function index({background, stairsColor}: any) {
 
   return (
-    <div className={styles.stairs}>
+    <div className={styles.stairs+" "+ background + ' '+ stairsColor}>
       {
         [...Array(5)].map( (_, index) => {
           return <Stair key={index} index={index}/>
