@@ -40,8 +40,10 @@ export default function Services() {
 
   return (
     <>
-      <div className="px-16 py-9 text-lg">
-        What's we do
+      <div className="px-18 py-9 text-center">
+      <span className='text-5xl'>
+      Here's what we can offer you
+        </span>
       </div>
       {faqs.map((faq, index) => (
         <Accordion
@@ -54,9 +56,11 @@ export default function Services() {
           isLast={index === faqs.length - 1}
         >
           <span className="pb-8">
+            <p className="">
             {faq.text}
+            </p>
             <div className="py-5">
-            <Link href="#" className='bg-emerald-700 text-white px-5 py-3 rounded-full group-hover:bg-white group-hover:text-black'>Read more</Link>
+            <Link href="#" className='border-2 border-zinc-400 text-black px-5 py-3 rounded-full group-hover:bg-white group-hover:text-black group-hover:border-white hidden'>Read more</Link>
             </div>
           </span>
         </Accordion>

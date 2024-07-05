@@ -1,23 +1,34 @@
-import ContactForm from "@/app/components/contactForm"
-import ProjectHero from "@/app/components/projectHero/page"
-import ProjectInfo from "@/app/components/projectInfo/page"
-import { fetchProjectBySlug } from "@/app/db/queries/project"
-
-export const revalidate = 3600 // revalidate at most every hour
-
-export default async function Project({ params }: { params: { slug: string } }) {
-
-    const project = await fetchProjectBySlug(params.slug)
+import ProjectHero from "@/app/components/projectHero/page";
+import ProjectInfo from "@/app/components/projectInfo/page";
+import prisma from "@/app/lib/db";
 
 
-    return (<>
-        <ProjectHero />
-        <ProjectInfo />
+export const revalidate = 1  // revalidate at most every minute
 
-        
-        Project title from DB
-        {project?.title}
+export default async function Project({ params }: any) {
+    const { slug } = params;
 
-        <ContactForm />
-    </>)
+    const project = await prisma.project.findFirst({
+        where: {
+            slug: slug
+        },
+        include: {
+            images: true
+        }
+    });
+
+    console.log(project)
+    if (!project) {
+        return( <div>Project not found</div>);
+    }
+
+    // Ensure title is a string
+    const projectTitle = project.title || "";
+
+    return (
+        <>
+            <ProjectHero hero={projectTitle} />
+            <ProjectInfo project={project} />
+        </>
+    );
 }

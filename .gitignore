@@ -42,3 +42,8 @@ next-env.d.ts
 
 #ftp
 /.ftp-deploy-sync-state.json
+
+#prisma
+/migrations
+
+/src/app/(admin)

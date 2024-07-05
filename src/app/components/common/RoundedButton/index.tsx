@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './style.module.scss';
 import gsap from 'gsap';
-import Magnetic from '@/app/common/magnetic';
+import Magnetic from '../magnetic';
+
 
 export default function index({ children, backgroundColor = "#455CE9", ...attributes }: any) {
     const circle = useRef(null);

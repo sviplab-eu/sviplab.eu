@@ -45,7 +45,7 @@ export default function link({data, index}: any) {
           {...mountAnim}
           custom={index} 
           className={styles.el}>
-            <Link href={url}>{title}</Link>
+            <Link href={url} className='block w-full text-center'><div>{title}</div></Link>
             <div ref={outer} className={styles.outer}>
                 <div ref={inner} className={styles.inner}>
 
