@@ -12,16 +12,22 @@ async function sendEmail({ name, email, phone, message, interestedIn, files }: a
         },
     });
 
+    const interestedInString = Object.entries(interestedIn)
+    .filter(([key, value]) => value)
+    .map(([key, value]) => key)
+    .join(', ');
+
+
     let mailOptions = {
         from: `"${name}" <${email}>`,
-        to: 'ipiliavskyi@gmail.com',
+        to: process.env.GMAIL_USER,
         subject: 'New Contact Form Submission',
         text: `
             Name: ${name}
             Email: ${email}
             Phone: ${phone}
             Message: ${message}
-            Interested in: ${interestedIn}
+            Interested in: ${interestedInString}
         `,
         attachments: files.map((file: any) => ({
             filename: file.name,

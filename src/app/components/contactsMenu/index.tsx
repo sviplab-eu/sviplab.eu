@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { opacity, slideLeft, mountAnim } from './anim';
 import styles from './style.module.scss';
 import Form from './form';
+import Link from 'next/link';
 
 export default function index({ closeMenu }: any) {
 
@@ -12,10 +13,10 @@ export default function index({ closeMenu }: any) {
         {...mountAnim}
         custom={0.1}
         className={styles.body}>
-        <div className={"fixed top-0 left-0 flex z-30 h-full w-full flex-col content-center"}>
+        <div className={"fixed top-0 left-0 flex z-[50] h-full w-full flex-col content-center bg-slate-900 max-lg:overflow-y-scroll pt-96 md:pt-20 px-10"}>
 
 
-          <div className='flex justify-end px-5 pt-4'>
+          <div className='flex justify-end mr-5 mt-5 fixed top-0 right-3 z-50'>
             <div className='flex content-center justify-center bg-white p-2 text-center text-black rounded-full hover:cursor-pointer' onClick={() => { closeMenu() }}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -24,38 +25,39 @@ export default function index({ closeMenu }: any) {
             </div>
           </div>
 
-          <div className="container mx-auto h-full flex flex-col content-around justify-center">
+          <div className="container lg:mx-auto h-full flex flex-col content-around justify-center">
       <div className="lg:flex lg:items-center">
-                <div id='contacts' className="grid lg:h-full content-between lg:w-1/2 lg:mx-6">
+                <div id='contacts' className="grid lg:h-full content-between w-full lg:w-1/2 lg:mx-6">
                   <h1 className="text-2xl font-semibold text-white capitalize dark:text-white lg:text-3xl">
                     How can we help you?<br />
-                    Fill out and send a form. Our Team will contact you promptly.
                   </h1>
 
                   <div className="text-left inline-grid content-start">
                     <p className="flex items-start -mx-2 py-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-2 text-blue-500 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-2 text-blue-500 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path stroke-linecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
 
                       <span className="mx-2 text-white truncate w-72 dark:text-gray-400">
-                        Our Street 711-2880 Nulla
-                        St. Mankato Mississippi 96522
+                      Łąkowa 7b, 90-562 Łódź<br />
+                      Poland
                       </span>
                     </p>
 
                     <p className="flex items-start -mx-2 py-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-2 text-blue-500 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-2 text-blue-500 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
 
-                      <span className="mx-2 text-white truncate w-72 dark:text-gray-400">(123) 123-45-56</span>
+                    <span className="mx-2 text-white truncate w-72 dark:text-gray-400">
+                      <Link href={"tel:+48 505 86 24 33"}>+48 505 86 24 33</Link>
+                      </span>
                     </p>
 
                     <p className="flex items-start -mx-2 py-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-2 text-blue-500 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-2 text-blue-500 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
 
                       <span className="mx-2 text-white truncate w-72 dark:text-gray-400">info@sviplab.eu</span>
@@ -95,7 +97,10 @@ export default function index({ closeMenu }: any) {
                   </div>
                 </div>
 
-                <div className="lg:w-1/2 lg:mx-6">
+              <div className="lg:w-1/2 lg:mx-6">
+              <h1 className="text-2xl font-semibold text-white capitalize dark:text-white lg:text-3xl pb-5">
+                    Fill out and send a form. Our Team will contact you promptly.
+                  </h1>
                   <Form closeMenu={function (): void {
                     throw new Error('Function not implemented.');
                   } }/>

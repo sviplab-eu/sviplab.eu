@@ -9,19 +9,19 @@ import MainMenu from "../mainMenu";
 import styles from './style.module.scss';
 import Link from "next/link";
 import MainMenuBurger from '../mainMenuBurger';
+import Image from 'next/image'
 
 export function Header() {
     const [contactsMenuIsOpen, setContactsMenuIsOpen] = useState(false);
     const [mainMenuIsOpen, setMainMenuIsOpen] = useState(false);
 
     return (
-        <nav className={`flex items-center justify-between fixed z-20 w-full px-5 pt-5 `}>
+        <nav className={`flex items-center justify-between fixed z-20 w-full pt-5 max-md:px-2 px-3 `}>
             
             <Link href={"/"} className="text-white text-4xl">
-                LOGO
+                <Image alt="" src="/images/logo.png" width={40} height={40}/>
             </Link>
 
-            <div>
             <div className={styles.menuContactsButtons + " text-white"}>
                 <div className='flex content-center justify-center items-center'>
                     <Burger openMenu={() => { setContactsMenuIsOpen(true) }} />
@@ -40,7 +40,6 @@ export function Header() {
                         </>}
                     </AnimatePresence>
                 </div>
-            </div>
             </div>
         </nav>
     );
