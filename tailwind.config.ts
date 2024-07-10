@@ -8,15 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-      cursor: {
-        'fancy': 'url(images/cursor.svg), pointer',
+      flex: {
+        '2': '1 0 100%'
       }
-    },
+    }
   },
   plugins: [],
 }

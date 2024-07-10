@@ -44,7 +44,8 @@ export default function Contacts({ openMenu }: any) {
                         </span>
                         <motion.div style={{ x }} className={styles.buttonContainer}>
                             <div id='contbut'>
-                                <Rounded backgroundColor={"#334BD3"} className={styles.button} onClick={openContactMenu}>
+                                
+                                <Rounded backgroundColor={"#FFFF00"} className={styles.button} onClick={openContactMenu}>
                                     <p>Get in touch</p>
                                 </Rounded>
                             </div>
@@ -64,9 +65,11 @@ export default function Contacts({ openMenu }: any) {
                                 <p>WhatsApp</p>
                             </Rounded>
                         </a>
+                        <a href="mailto:info@sviplab.eu" target='_blank'>
                         <Rounded>
                             <p>info@sviplab.eu</p>
-                        </Rounded>
+                            </Rounded>
+                        </a>
                     </div>
                     <div className={styles.info}>
                         <div>
