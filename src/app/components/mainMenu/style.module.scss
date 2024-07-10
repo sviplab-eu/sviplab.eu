@@ -68,7 +68,7 @@
             pointer-events: none;
             will-change: top;
             .inner{
-                background-color: #D3FD50;
+                background-color: #1a1a1a;
                 position: absolute;
                 white-space: nowrap;
                 height: 100%;
@@ -104,12 +104,12 @@
                         }
                     }
                     p{
-                        color: black;
+                        color: white;
                     }
                 }
             }
             .background{
-                background-color: #D3FD50;
+                background-color: #1a1a1a;
                 position: absolute;
                 height: 100%;
                 width: 100%;

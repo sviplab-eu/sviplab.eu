@@ -1,10 +1,12 @@
+'use client'
+
 import React, { useEffect, useRef } from 'react';
 import styles from './style.module.scss';
 import gsap from 'gsap';
 import Magnetic from '../magnetic';
 
 
-export default function index({ children, backgroundColor = "#455CE9", ...attributes }: any) {
+export default function index({ children, backgroundColor, backgroundColorHover, onClickAction, ...attributes }: any) {
     const circle = useRef(null);
     let timeline: any = useRef(null); // Use gsap.core.Timeline type
 
@@ -30,9 +32,12 @@ export default function index({ children, backgroundColor = "#455CE9", ...attrib
 
     return (
         <Magnetic>
-            <div className={styles.roundedButton} style={{ overflow: "hidden" }} onMouseEnter={manageMouseEnter} onMouseLeave={manageMouseLeave} {...attributes}>
+            <div className={styles.roundedButton + " "} style={{ overflow: "hidden" }}
+                onMouseEnter={manageMouseEnter}
+                onMouseLeave={manageMouseLeave}
+                onClick={onClickAction}
+                {...attributes}>
                 {children}
-                <div ref={circle} style={{ backgroundColor }} className={styles.circle}></div>
             </div>
         </Magnetic>
     );

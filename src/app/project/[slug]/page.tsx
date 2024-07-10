@@ -1,14 +1,17 @@
-import ProjectHero from "@/app/components/projectHero/page";
-import ProjectInfo from "@/app/components/projectInfo/page";
+import ProjectHero from "@/app/components/projectHero";
+import ProjectInfoWeb from "@/app/components/projectInfoWeb";
+import ProjectInfo from "@/app/components/projectInfo";
 import prisma from "@/app/lib/db";
+import AllProjectsLink from "@/app/components/allProjectsLink";
+import NotFound from "@/app/not-found";
 
 
-export const revalidate = 1  // revalidate at most every minute
+export const revalidate = 30  // revalidate at most every minute
 
 export default async function Project({ params }: any) {
     const { slug } = params;
 
-    const project = await prisma.project.findFirst({
+    const project:any = await prisma.project.findFirst({
         where: {
             slug: slug
         },
@@ -17,18 +20,26 @@ export default async function Project({ params }: any) {
         }
     });
 
-    console.log(project)
     if (!project) {
-        return( <div>Project not found</div>);
+        return(<NotFound/>);
     }
 
     // Ensure title is a string
-    const projectTitle = project.title || "";
+    const projectTitle = project.title || "Untitled";
+    const projectLink = project.url;
+    const projectMediaSwitcher = project.imageInHero;
+    const projectMediaUrl = project.heroMediaUrl;
 
     return (
         <>
-            <ProjectHero hero={projectTitle} />
+            <ProjectHero hero={projectTitle}
+                projectRemoteUrl={projectLink}
+                imageInHero={projectMediaSwitcher}
+                heroMediaUrl={projectMediaUrl}
+            />
             <ProjectInfo project={project} />
+            <ProjectInfoWeb project={project} />
+            <AllProjectsLink />
         </>
     );
 }

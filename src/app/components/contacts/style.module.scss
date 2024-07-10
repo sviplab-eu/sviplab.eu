@@ -15,8 +15,10 @@
         align-items: center;
         justify-content: center;
         padding: 15px 60px 15px 60px;
+        background-color: white;
 
         p {
+            color: black;
             position: relative;
             z-index: 1;
             transition: color 0.4s linear;
@@ -71,7 +73,6 @@
                 .button {
                     width: 180px;
                     height: 180px;
-                    background-color: #455CE9;
                     color: white;
                     border-radius: 50%;
                     position: absolute;
