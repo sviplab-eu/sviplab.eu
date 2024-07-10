@@ -1,8 +1,13 @@
 model Project {
-  id                Int              @id @default(autoincrement())
+  id                Int               @id @default(autoincrement())
   title             String?
-  slug              String           @unique
+  slug              String            @unique
   previewImageURL   String?
+  headerDescription String?
+  headerTitle       String?
+  imageInHero       Boolean           @default(true)
+  url               String?
+  heroMediaUrl      String?
   images            ProjectImage[]
   services          ProjectServices[]
 }
