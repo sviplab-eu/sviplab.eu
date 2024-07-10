@@ -17,15 +17,9 @@ const menu = [
     images: ['agence1.jpg', 'agence2.jpg']
   },
   {
-    title: "Solutions",
-    url: "#",
-    description: "To Learn Everything",
-    images: ['agence1.jpg', 'agence2.jpg']
-  },
-  {
     title: "About",
     url: "#",
-    description: "To Send a FAX",
+    description: "Who are we",
     images: ['contact2.jpg', 'c2.jpg']
   }
 ]

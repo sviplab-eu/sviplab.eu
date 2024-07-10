@@ -8,7 +8,7 @@ export const revalidate = 5  // revalidate at most every minute
 
 export default async function ProjectsOnHome() {
   const project = await prisma.project.findMany({
-    take: 4
+    take: 2
   });
 
   return (<>

@@ -46,4 +46,8 @@ next-env.d.ts
 #prisma
 /migrations
 
+# uploded assets
+/public/assets
+
+#admin panel
 /src/app/(admin)

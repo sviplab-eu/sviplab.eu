@@ -1,15 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Burger from "../burger";
 import { AnimatePresence } from "framer-motion";
 import Stairs from "../stairs";
 import ContactsMenu from "../contactsMenu";
 import MainMenu from "../mainMenu";
 import styles from './style.module.scss';
-import Link from "next/link";
 import MainMenuBurger from '../mainMenuBurger';
-import Image from 'next/image'
+import Logo from "../logo";
 
 export function Header() {
     const [contactsMenuIsOpen, setContactsMenuIsOpen] = useState(false);
@@ -18,9 +17,7 @@ export function Header() {
     return (
         <nav className={`flex items-center justify-between fixed z-20 w-full pt-5 max-md:px-2 px-3 `}>
             
-            <Link href={"/"} className="text-white text-4xl">
-                <Image alt="" src="/images/logo.png" width={40} height={40}/>
-            </Link>
+            <Logo/>
 
             <div className={styles.menuContactsButtons + " text-white"}>
                 <div className='flex content-center justify-center items-center'>
