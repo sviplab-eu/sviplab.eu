@@ -10,7 +10,7 @@ export default async function VideoContainer(
         <>
             <div className="min-h-[70%] relative content-center bg-center bg-cover bg-fixed">
                 <video autoPlay loop muted className="absolute inset-0 w-full h-full object-cover">
-                    <source src={`../images/${heroMediaUrl}`} type="video/mp4" />
+                    <source src={`${heroMediaUrl}`} type="video/mp4" />
                     Your browser doesn't support video format
                 </video>
                     <div className="absolute -bottom-10 md:-bottom-20 z-10  ml-5 md:ml-10 ">

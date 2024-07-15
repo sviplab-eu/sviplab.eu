@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    domains: ['sviplab.eu'], 
     remotePatterns: [
       {
         protocol: 'http',
@@ -10,13 +11,13 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'sviplab.eu',
-        port: '3000',
+        hostname: 'sviplab-eu.vercel.app',
+        port: '',
         pathname: '/**',
       },
       {
-        protocol: 'https',
-        hostname: 'sviplab-eu.vercel.app',
+        protocol: 'http',
+        hostname: 'git.server681096.nazwa.pl',
         port: '',
         pathname: '/**',
       }

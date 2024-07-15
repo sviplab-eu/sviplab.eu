@@ -4,9 +4,9 @@ import ProjectInfo from "@/app/components/projectInfo";
 import prisma from "@/app/lib/db";
 import AllProjectsLink from "@/app/components/allProjectsLink";
 import NotFound from "@/app/not-found";
+import Image from "next/image";
 
-
-export const revalidate = 30  // revalidate at most every minute
+export const revalidate = 120  // revalidate at most every minute
 
 export default async function Project({ params }: any) {
     const { slug } = params;
@@ -29,6 +29,7 @@ export default async function Project({ params }: any) {
     const projectLink = project.url;
     const projectMediaSwitcher = project.imageInHero;
     const projectMediaUrl = project.heroMediaUrl;
+    const projectImages = project.images;
 
     return (
         <>
@@ -38,7 +39,22 @@ export default async function Project({ params }: any) {
                 heroMediaUrl={projectMediaUrl}
             />
             <ProjectInfo project={project} />
-            <ProjectInfoWeb project={project} />
+            <div className="grid grid-cols-1 gap-10 pt-44 md:grid-cols-2">
+            {project.images.map((image: any, index:any) => (
+                <div className="h-auto max-w-full rounded-lg" key={index}>
+                <Image
+                src={image.url}
+                alt={image.alt}
+                className=""
+                key={image.id}
+                width={1000}
+                height={1000}
+              />
+
+                </div>
+            ))}
+                </div>
+
             <AllProjectsLink />
         </>
     );
