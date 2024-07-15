@@ -3,12 +3,16 @@ import AllProjectsLink from "../allProjectsLink";
 import prisma from "@/app/lib/db";
 
 
-export const revalidate = 5  // revalidate at most every minute
+export const revalidate = 120  // revalidate at most every minute
 
 
 export default async function ProjectsOnHome() {
   const project = await prisma.project.findMany({
-    take: 2
+    take: 2,
+    include: {
+      services: {
+      }
+    }
   });
 
   return (<>
