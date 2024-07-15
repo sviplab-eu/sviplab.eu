@@ -7,7 +7,7 @@ export default function ImageContainer(
     { title: string, heroMediaUrl:string, projectRemoteUrl:string }
 ) {
     const backgroundImageStyle = {
-        backgroundImage: `url(../images/${heroMediaUrl})`
+        backgroundImage: `url(${heroMediaUrl})`
       };
     return (
         <>
