@@ -20,6 +20,12 @@ const nextConfig = {
         hostname: 'git.server681096.nazwa.pl',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'images.sviplab.eu',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
