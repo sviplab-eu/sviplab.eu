@@ -10,11 +10,11 @@ const ProjectInfo = ({ project }: any) => {
     <>
       <div className="pt-24 md:pt-28 lg:pt-36">
 
-        <div className="flex justify-around px-24 lg:px-36">
-          <div className="w-1/3 text-3xl">
+        <div className="flex justify-around px-6 md:px-24 lg:px-36 flex-col md:flex-row">
+          <div className="md:w-1/3 text-3xl">
             {project.headerTitle}
           </div>
-          <div className="text-xl pl-40">
+          <div className="text-xl md:pl-40">
             {project.headerDescription}
           </div>
         </div>

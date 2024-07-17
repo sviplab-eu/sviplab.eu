@@ -10,15 +10,15 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'sviplab.eu',
-        port: '3000',
-        pathname: '/**',
+        hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: '/djsx9wdej/**',
       },
       {
         protocol: 'https',
-        hostname: 'sviplab-eu.vercel.app',
+        hostname: 'asset.cloudinary.com',
         port: '',
-        pathname: '/**',
+        pathname: '/djsx9wdej/**',
       }
     ],
   },
