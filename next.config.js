@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['sviplab.eu'], 
     remotePatterns: [
       {
         protocol: 'http',
@@ -11,21 +10,15 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'sviplab-eu.vercel.app',
+        hostname: 'res.cloudinary.com',
         port: '',
-        pathname: '/**',
+        pathname: '/djsx9wdej/**',
       },
       {
-        protocol: 'http',
-        hostname: 'git.server681096.nazwa.pl',
+        protocol: 'https',
+        hostname: 'asset.cloudinary.com',
         port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'http',
-        hostname: 'images.sviplab.eu',
-        port: '',
-        pathname: '/**',
+        pathname: '/djsx9wdej/**',
       }
     ],
   },
