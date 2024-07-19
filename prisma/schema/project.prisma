@@ -10,6 +10,8 @@ model Project {
   heroMediaUrl      String?
   images            ProjectImage[]
   services          ProjectServices[]
+  metatitle         String?
+  metadesc          String?
 }
 
 model ProjectImage {

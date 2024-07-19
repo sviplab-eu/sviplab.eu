@@ -5,6 +5,7 @@ import prisma from "@/app/lib/db";
 import AllProjectsLink from "@/app/components/allProjectsLink";
 import NotFound from "@/app/not-found";
 import Image from "next/image";
+import type { Metadata, ResolvingMetadata } from 'next'
 
 export const revalidate = 120  // revalidate at most every minute
 
@@ -59,3 +60,23 @@ export default async function Project({ params }: any) {
         </>
     );
 }
+  
+  export async function generateMetadata(
+    { params }: any,
+    parent: ResolvingMetadata
+  ): Promise<Metadata> {
+    // read route params
+    const { slug } = params;
+
+    const project:any = await prisma.project.findFirst({
+        where: {
+            slug: slug
+        }
+    });
+   
+    return {
+        title: project?.metatitle + " | SVIPLAB Development company",
+        description: project?.metadesc || "Trust your project to our app development company.",
+        
+    }
+  }
